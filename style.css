@@ -1,3 +1,15 @@
 body {
   background-color: lightblue;
+  font-family: 'Roboto', sans-serif;
+  padding-left: 20px;
+
+}
+ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+span {
+  font-weight: bold;
 }
