@@ -6,13 +6,13 @@
 	</head>
 	<body>
 		<p id="nope"></p>
-		<input placeholder="Enter your username here" id="input">
+		<input placeholder="Enter your username" id="input">
 		<button type="submit" id="goTo">Go to the messaging service</button>
 		<script>
 			function goToPage() {
 				if (document.getElementById("input").value != "") {
 					sessionStorage.user = document.getElementById("input").value
-					location.href = "messageing.html"
+					location.href = "messaging.html"
 				} else {
 					document.getElementById('nope').textContent = "You must enter a username"
 				}
