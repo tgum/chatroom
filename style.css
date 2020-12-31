@@ -1,5 +1,5 @@
 body {
-  background-color: lightblue;
+  background-color: rgb(100,0,255);
   font-family: 'Roboto', sans-serif;
   padding-left: 20px;
 
@@ -12,4 +12,11 @@ ul {
 
 span {
   font-weight: bold;
+}
+.center{
+  margin-top: 50vh; /* poussé de la moitié de hauteur de viewport */
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
