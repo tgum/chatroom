@@ -34,11 +34,11 @@ document.getElementById("submit").addEventListener("click", encode)
 
 function gotData(data) {
 allMessages = data.val();
-var keys = Object.keys(allMessages)
+var keys = Object.keys(allMessages).reverse()
 document.getElementById("messages").innerHTML = ""
 for (var i = 0; i < keys.length; i++) {
   var newLi = document.createElement("li")
-  newLi.textContent = allMessages[keys[i]].sender + " said: " + rot13(allMessages[keys[i]].content)
+  newLi.textContent = allMessages[keys[i]].sender + ": " + rot13(allMessages[keys[i]].content)
   document.getElementById("messages").appendChild(newLi)
 }
 }
