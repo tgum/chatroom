@@ -15,13 +15,8 @@ ul {
 	color: rgb(128, 218, 0);
 }
 
-#online {
-	margin: 0;
-	padding: 0;
-}
-
 li {
-	margin: 10px;
+	margin: 9px;
 	font-family: serif;
 	font-size: 18px
 }
