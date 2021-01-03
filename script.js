@@ -72,6 +72,7 @@ function encode() {
 	ref.push(data);
 	document.getElementById("textBox").value = "";
 	document.getElementById("textBox").focus();
+
 }
 document.getElementById("submit").addEventListener("click", encode);
 
