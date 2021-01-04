@@ -3,28 +3,30 @@
   margin: 0;
 }
 body {
-  background-color: rgb(150,0,255);
-  font-family: 'Roboto', sans-serif;
+  background-color: rgb(0,0,0);
+  font-family: Roboto Mono;
+  color: rgba(0,255,0,1);
   padding-left: 20px;
+  caret-color: rgb(0,255,0);
 }
 #logout {
   margin: 10px 0;
   border: 1px;
-  border-color: rgba(0,0,0,0.8);
+  border-color: rgba(0,0,0,1);
 }
 ul {
   list-style-type: none; /* Remove bullets */
 }
 .user {
-  font-weight: bold;
+  font-weight: normal;
 }
 .content {
   font-weight: normal;
-  background-color: rgba(255,255,255,0.7);
-  border-radius: 0 6px 6px 6px ;
+  background-color: rgba(0,255,0,1);
+  /*border-radius: 0 6px 6px 6px ;
   margin: 1px 3px 5px 0px;
-  padding: 3px 7px;
-  color: rgba(0,0,0,0.8);
+  padding: 3px 7px;*/
+  color: rgba(0,0,0,1);
   display: inline-block;
 }
 .center{
@@ -35,16 +37,18 @@ ul {
   align-items: center;
 }
 .input {
-  background-color: rgba(255,255,255,0.5); /* Blue */
-  border: none;
-  border-radius: 4px;
-  color: rgba(0,0,0,0.8);
+  background-color: rgba(0,0,0,1); /* Blue */
+  border-color: rgba(0,255,0,1);
+  color: rgba(0,255,0,1);
   padding: 15px 15px;
   text-align: left;
   text-decoration: none;
   /*display: inline-block;*/
   font-size: 16px;
   margin-bottom: 10px;
+}
+input:focus {
+  outline: none;
 }
 .button {
   background-color: rgb(75,0,255); /* Blue */
@@ -73,7 +77,7 @@ ul {
   box-shadow: 0 5px 5px 0 rgba(0,0,0,0.24), 0 5px 5px 0 rgba(0,0,0,0.19);
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgba(0,0,0,0.4);
+  color: rgba(0,255,0,1);
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: black;
