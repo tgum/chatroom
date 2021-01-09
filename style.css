@@ -115,7 +115,7 @@ ul {
   color: rgba(0,0,0,1);
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color: rgba(0,0,0,0.4);
+  color: rgba(0,255,0,1);
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
   color: black;
