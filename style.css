@@ -82,12 +82,20 @@ ul {
   font-size: 16px;
   padding: 20px;
 } */
+#nope {
+  display: block;
+  color: black;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,255,0,1);
+  font-size: 16px;
+}
 .input {
   background-color: rgba(0,0,0,1);
   border-color: rgba(0,255,0,1);
   color: rgba(0,255,0,1);
   padding: 15px 15px;
-  margin-right: 2px;
+  margin-right: 10px;
   text-align: left;
   text-decoration: none;
   font-size: 16px;
@@ -101,13 +109,12 @@ ul {
   border-color: rgba(0,255,0,1);
   border-width: thin;
   color: rgba(0,255,0,1);
-  padding: 5px 10px;
+  padding: 15px 10px;
   text-align: center;
   font-size: 16px;
   font-family: 'Roboto Mono';
   transition-duration: 0.5s;
   text-decoration: none;
-
 }
 #submit:hover, .button:hover, .logout:hover {
   background-color: rgb(0,255,0);
