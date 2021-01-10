@@ -15,6 +15,20 @@ ul {
 	color: rgb(128, 218, 0);
 }
 
+.content {
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	background-color: rgba(255, 255, 255, 0.8);
+	border-radius: 0 15px 15px;
+	padding: 6px;
+	display: inline-block;
+}
+
 li {
 	margin: 9px;
 	font-family: serif;
