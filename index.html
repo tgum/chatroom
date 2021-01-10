@@ -11,8 +11,8 @@
 		<div class="top_container">
 			<div class="banner">tgum chatroom</div>
 			<div class="center">
-				<div id="nope"></div>
-				<input class="input" placeholder="insert username*" id="input" spellcheck="false" autofocus>
+				<div id="nope">insert username*</div>
+				<input class="input" id="input" spellcheck="false" autofocus>
 				<button class="button" type="submit" id="goTo">log in</button>
 			</div>
 		</div>
@@ -24,6 +24,7 @@
 					location.href = "chat.html"
 				} else {
 					document.getElementById('nope').textContent = "You must enter a username"
+					document.getElementById("input").focus();
 				}
 			}
 			document.getElementById("goTo").addEventListener("click", goToPage)
