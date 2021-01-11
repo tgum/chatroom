@@ -118,10 +118,6 @@ document.getElementById("textBox").addEventListener("keydown", function(event) {
 		event.preventDefault();
 		keys.enter = true;
 	}
-	if (event.keyCode === 13 && keys.shift === false) {
-		console.log("enter")
-		document.getElementById("textBox").value += "\n"
-	}
 	if (keys.shift && keys.enter) {
 		button.click();
 		keys.enter = false;
