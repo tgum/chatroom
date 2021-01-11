@@ -96,7 +96,7 @@ ul {
 *:focus {
   outline: none;
 }
-#submit, .button, .logout {
+#submit, .button {
   background-color: rgb(0,0,0);
   border-color: rgba(0,255,0,1);
   border-width: thin;
@@ -107,6 +107,21 @@ ul {
   font-family: 'Roboto Mono';
   transition-duration: 0.5s;
   text-decoration: none;
+}
+.logout {
+  background-color: rgba(0,255,0,1);
+  border-color: rgba(0,0,0,0.5);
+  border-width: thin;
+  margin-left: 15px;
+  margin-top: 10px;
+  padding: 5px 5px;
+  text-align: center;
+  font-size: 10px;
+  font-family: 'Roboto Mono';
+  position: absolute;
+  top: 2px;
+  z-index: 3;
+  right: 5px;
 }
 #submit:hover, .button:hover, .logout:hover {
   background-color: rgb(0,255,0);
@@ -121,19 +136,4 @@ ul {
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
   color: black;
-}
-.logout {
-  background-color: rgba(0,255,0,1);
-  border-color: rgba(0,0,0,0.5);
-  border-width: thin;
-  margin-left: 15px;
-  margin-top: 10px;
-  padding: 5px 5px;
-  text-align: center;
-  font-size: 10px;
-  font-family: 'Roboto Mono';
-  position: fixed;
-  top: 2px;
-  z-index: 3;
-  right: 5px;
 }
