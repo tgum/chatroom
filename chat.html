@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 	<head>
-		<meta charset="acii">
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial_scale=1.0">
 		<link rel="stylesheet" href="style.css">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
 		<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
-		<title>my messaging platform</title>
+		<title>tgum’s chatroom</title>
 	</head>
 	<body>
-		<a href="index.html">change username<br><br></a>
-		<textarea rows="4" cols="35" id="textBox" placeholder="write your message here" spellcheck="false" autofocus></textarea>
-		<button type="submit" id="submit">send</button>
-
-		<ul id="messages"></ul>
+		<div class="top_container">
+			<div class="banner">tgum’s chatroom</div>
+			<button class="logout"><a href="index.html">log out</a></button>
+		</div>
+		<div id="main">
+			<textarea id="textBox" spellcheck="false" autofocus cols="21" rows="5" minlength="1" required></textarea>
+			<button type="submit" id="submit">send</button>
+			<ul id="messages"></ul>
+		</div>
 		<script src="script.js"></script>
 	</body>
 </html>
