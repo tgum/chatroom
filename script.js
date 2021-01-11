@@ -97,11 +97,11 @@ function errData(err) {
 			}
 		}
 	}, errData);
-}*/
+}
 
 window.onbeforeunload = function(){
 	onQuit();
-};
+};*/
 
 var keys = {
 	shift: false,
@@ -117,6 +117,10 @@ document.getElementById("textBox").addEventListener("keydown", function(event) {
 	else if (event.keyCode === 13) {
 		event.preventDefault();
 		keys.enter = true;
+	}
+	if (event.keyCode === 13 && keys.shift === false) {
+		console.log("enter")
+		document.getElementById("textBox").value += "\n"
 	}
 	if (keys.shift && keys.enter) {
 		button.click();
