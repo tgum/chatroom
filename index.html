@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<div class="top_container">
-			<div class="banner">tgum chatroom</div>
+			<div class="banner">tgum’s chatroom</div>
 			<div class="center">
 				<div id="nope">insert username*</div>
 				<input class="input" id="input" spellcheck="false" autofocus>
@@ -23,7 +23,7 @@
 					sessionStorage.user = document.getElementById("input").value
 					location.href = "chat.html"
 				} else {
-					document.getElementById('nope').textContent = "You must enter a username"
+					document.getElementById('nope').textContent = "A username is required"
 					document.getElementById("input").focus();
 				}
 			}
