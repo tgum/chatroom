@@ -134,3 +134,7 @@ ul {
 	font-size: 15px;
 	margin-bottom: 5px;
 }
+
+img {
+	max-width: 400px;
+}

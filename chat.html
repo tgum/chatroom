@@ -2,11 +2,17 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial_scale=1.0">
+		<script>
+			if (sessionStorage.user == undefined) {
+				location.href = "index.html"
+			}
+		</script>
 		<link rel="stylesheet" href="style.css">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap">
-		<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase.js"></script>
-		<title>tgum’s chatroom</title>
+		<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
+		</style>
 	</head>
 	<body>
 		<div class="top_container">
@@ -17,6 +23,7 @@
 			<textarea id="textBox" spellcheck="false" autofocus cols="21" rows="5" minlength="1"></textarea>
 			<button type="submit" id="submit">send</button>
 			<ul id="messages"></ul>
+			<ul id="details"></ul>
 		</div>
 		<script src="script.js"></script>
 	</body>
