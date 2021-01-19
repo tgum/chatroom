@@ -27,6 +27,17 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 var daysWeek = ["Sunday", "Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saturday"]
 function sendMessage() {
 	var text = document.getElementById("textBox").value;
+
+	var separator = "%%"
+	var firstIndex = text.indexOf(separator)
+	var lastIndex = text.lastIndexOf(separator)
+	var code = text.slice(firstIndex + separator.length, lastIndex)
+	code = code.replaceAll("\n", "`br`")
+	code = code.replaceAll("<", "&lt;")
+	code = code.replaceAll("`br`", "<br>")
+	var complete = text.slice(0, firstIndex) + code + text.slice(lastIndex + separator.length, text.length)
+	text = complete
+
 	time = new Date();
 	var date = daysWeek[time.getDay()] + ", " + time.getDate() + " " + months[time.getMonth()] + " " + time.getFullYear();
 	var minutes = time.getMinutes();
@@ -38,11 +49,6 @@ function sendMessage() {
 		alert("You have to write something")
 		return null;
 	}
-
-	/*if (text.includes("</script>")) {
-		alert("No scripts in here, nah ah ah");
-		return null;
-	}*/
 
 	var data = {
 		sender: sessionStorage.user,
@@ -90,9 +96,6 @@ function readMessages(data) {
 		time = "<span class='time'>The " + allMessages[keys[i]].date + "ᵗʰ at " + allMessages[keys[i]].time + "</span>"
 		time = "<span class='time'>" + allMessages[keys[i]].time + "</span>"
 		content = "<div class='content'>" + rot13(allMessages[keys[i]].content) + "</div><br>"
-		if (content.includes("\n")) {
-			content = content.replaceAll("\n", "<br>")
-		}
 		newPara.innerHTML = name + content.replace("\n", "<br>") + time;
 		document.getElementsByClassName(allMessages[keys[i]].date)[0].appendChild(newPara)
 	}
