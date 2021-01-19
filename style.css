@@ -93,9 +93,6 @@ li {
 	display:inline;
 }
 
-.detailbox {
-}
-
 .user {
 	font-family: 'Roboto';
 	font-weight: 700;
@@ -170,7 +167,7 @@ img {
 	text-decoration: none;
 }
 
-#submit:hover, .button:hover, .logout:hover, {
+#submit:hover, .button:hover, .logout:hover {
 	background-color: rgb(255,255,255);
 	color: rgba(150,0,255,1);
 }
