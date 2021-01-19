@@ -56,13 +56,13 @@ function readMessages(data) {
 	document.getElementById("messages").innerHTML = "";
 	for (var i = 0; i < keys.length; i++) {
 		var newLi = document.createElement("li");
-		name = "<strong class='user'>" + allMessages[keys[i]].sender + "</strong>:<br>"
-		content = "<div class='content'>" + rot13(allMessages[keys[i]].content) + "</div><br>"
-		time = "<span class='time'>" +  allMessages[keys[i]].time + "</span>"
+		var name = "<div class='detailbox'><span class='user'>" + allMessages[keys[i]].sender + "</span>"
+		var time = "<span class='time'>" + allMessages[keys[i]].time + "</span></div>"
+		var content = "<span class='content'>" + rot13(allMessages[keys[i]].content) + "</span>"
 		if (content.includes("\n")) {
 			content = content.replaceAll("\n", "<br>")
 		}
-		newLi.innerHTML = name + content.replace("\n", "<br>") + time;
+		newLi.innerHTML = name + time + content.replace("\n", "<br>");
 		document.getElementById("messages").appendChild(newLi);
 	}
 	if (keys.length > 100) {
