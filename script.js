@@ -27,16 +27,17 @@ var months = ["January", "February", "March", "April", "May", "June", "July", "A
 var daysWeek = ["Sunday", "Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saturday"]
 function sendMessage() {
 	var text = document.getElementById("textBox").value;
-
-	var separator = "%%"
-	var firstIndex = text.indexOf(separator)
-	var lastIndex = text.lastIndexOf(separator)
-	var code = text.slice(firstIndex + separator.length, lastIndex)
-	code = code.replaceAll("\n", "`br`")
-	code = code.replaceAll("<", "&lt;")
-	code = code.replaceAll("`br`", "<br>")
-	var complete = text.slice(0, firstIndex) + code + text.slice(lastIndex + separator.length, text.length)
-	text = complete
+	if (text.includes("%%")) {
+		var separator = "%%"
+		var firstIndex = text.indexOf(separator)
+		var lastIndex = text.lastIndexOf(separator)
+		var code = text.slice(firstIndex + separator.length, lastIndex)
+		code = code.replaceAll("\n", "`br`")
+		code = code.replaceAll("<", "&lt;")
+		code = code.replaceAll("`br`", "<br>")
+		var complete = text.slice(0, firstIndex) + code + text.slice(lastIndex + separator.length, text.length)
+		text = complete
+	}
 
 	time = new Date();
 	var date = daysWeek[time.getDay()] + ", " + time.getDate() + " " + months[time.getMonth()] + " " + time.getFullYear();
