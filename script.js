@@ -25,9 +25,22 @@ var ref = database.ref("messages");
 var allMessages;
 var time = new Date()
 ref.on("value", readMessages, errData);
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var daysWeek = ["Sunday", "Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saturday"]
 function sendMessage() {
 	var text = document.getElementById("textBox").value;
+	var separator = "%%"
+	var firstIndex = text.indexOf(separator)
+	var lastIndex = text.lastIndexOf(separator)
+	var code = text.slice(firstIndex + separator.length, lastIndex)
+	code = code.replaceAll("\n", "`br`")
+	code = code.replaceAll("<", "&lt;")
+	code = code.replaceAll("`br`", "<br>")
+	var complete = text.slice(0, firstIndex) + code + text.slice(lastIndex + separator.length, text.length)
+	text = complete
+
 	time = new Date();
+	var date = daysWeek[time.getDay()] + ", " + time.getDate() + " " + months[time.getMonth()] + " " + time.getFullYear();
 	var minutes = time.getMinutes();
 	if (minutes < 10) {
 		minutes = "0" + minutes.toString();
@@ -42,11 +55,12 @@ function sendMessage() {
 		sender: sessionStorage.user,
 		content: rot13(text),
 		time: time.getHours() + ":" + minutes,
+		date: time.getDate(),
+		fullDate: date
 	}
 	ref.push(data);
 	document.getElementById("textBox").value = "";
 	document.getElementById("textBox").focus();
-
 }
 document.getElementById("submit").addEventListener("click", sendMessage);
 
