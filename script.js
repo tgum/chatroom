@@ -24,7 +24,7 @@ var allMessages;
 var time = new Date()
 ref.on("value", readMessages, errData);
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-var daysWeek = ["Sunday", "Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saturday"]
+var daysWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 function sendMessage() {
 	var text = document.getElementById("textBox").value;
 	if (text.includes("%%")) {
