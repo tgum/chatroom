@@ -1,7 +1,3 @@
-if (sessionStorage.user == undefined) {
-	location.href = "index.html"
-}
-
 function rot13(str) {
 	var input     = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	var output    = 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm';
@@ -11,13 +7,15 @@ function rot13(str) {
 }
 
 var firebaseConfig = {
-	apiKey: "AIzaSyBSNTYqIkFl3clQDdV5tpNMdyFhXT8gv44",
-	authDomain: "message-teest.firebaseapp.com",
-	projectId: "message-teest",
-	storageBucket: "message-teest.appspot.com",
-	messagingSenderId: "981048070980",
-	appId: "1:981048070980:web:5c147607b3f809a4bb3d11"
+	apiKey: "AIzaSyBhIbcYDG4g1cG3PUf_pGSPMsx7rvYLu88",
+	authDomain: "scores-ba434.firebaseapp.com",
+	databaseURL: "https://scores-ba434-default-rtdb.firebaseio.com",
+	projectId: "scores-ba434",
+	storageBucket: "scores-ba434.appspot.com",
+	messagingSenderId: "49489500280",
+	appId: "1:49489500280:web:ba94d770db3807e42f758d"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database();
@@ -26,7 +24,7 @@ var allMessages;
 var time = new Date()
 ref.on("value", readMessages, errData);
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-var daysWeek = ["Sunday", "Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saturday"]
+var daysWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
 function sendMessage() {
 	var text = document.getElementById("textBox").value;
 	if (text.includes("%%")) {
@@ -70,16 +68,35 @@ function readMessages(data) {
 	allMessages = data.val();
 	var keys = Object.keys(allMessages).reverse();
 	document.getElementById("messages").innerHTML = "";
+	document.getElementById("details").innerHTML = ""
+	var dates = []
+	for (var i = 0; i < keys.length; i++) {
+		var date = new Date();
+		if (!dates.includes(allMessages[keys[i]].date)) {
+			dates.push(allMessages[keys[i]].date)
+			var newDetails = document.createElement("details")
+			var newSummary = document.createElement("summary")
+			var newUl = document.createElement("ul")
+			newSummary.textContent = allMessages[keys[i]].fullDate
+			newDetails.id = allMessages[keys[i]].date
+			var nowDate = daysWeek[date.getDay()] + ", " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
+			if (allMessages[keys[i]].fullDate === nowDate) {
+				newDetails.open = true
+			}
+			newUl.className = allMessages[keys[i]].date
+			document.getElementById("details").appendChild(newDetails)
+			document.getElementById(allMessages[keys[i]].date).appendChild(newSummary)
+			document.getElementById(allMessages[keys[i]].date).appendChild(newUl)
+		}
+	}
+
 	for (var i = 0; i < keys.length; i++) {
 		var newLi = document.createElement("li");
-		var name = "<div class='detailbox'><span class='user'>" + allMessages[keys[i]].sender + "</span>"
+		var name = "<div class='detailbox'><span class='user' onclick='addUserTextarea(this)'>" + allMessages[keys[i]].sender + "</span>:"
 		var time = "<span class='time'>" + allMessages[keys[i]].time + "</span></div>"
-		var content = "<span class='content'>" + rot13(allMessages[keys[i]].content) + "</span>"
-		if (content.includes("\n")) {
-			content = content.replaceAll("\n", "<br>")
-		}
+		var content = "<div class='content'>" + rot13(allMessages[keys[i]].content) + "</div>"
 		newLi.innerHTML = name + time + content.replace("\n", "<br>");
-		document.getElementById("messages").appendChild(newLi);
+		document.getElementsByClassName(allMessages[keys[i]].date)[0].appendChild(newLi)
 	}
 	if (keys.length > 100) {
 		let userRef = database.ref('messages/' + keys[keys.length - 1]);
@@ -91,9 +108,7 @@ function errData(err) {
 	console.error(err);
 }
 
-window.onclick = e => {
-	if (e.target.className === "user") {
-		document.getElementById("textBox").value += "@" + e.target.textContent + " "
-		document.getElementById("textBox").focus()
-	}
+function addUserTextarea(object) {
+	document.getElementById("textBox").value += "@" + object.textContent + " ";
+	document.getElementById("textBox").focus()
 }

@@ -19,12 +19,15 @@
 
 		<script>
 			function goToPage() {
-				if (document.getElementById("input").value != "") {
-					sessionStorage.user = document.getElementById("input").value
-					location.href = "chat.html"
-				} else {
+				if (document.getElementById("input").value === "") {
 					document.getElementById('nope').textContent = "A username is required"
 					document.getElementById("input").focus();
+				} else if (document.getElementById("input").value.length > 20) {
+					document.getElementById('nope').textContent = "Your username must be under 20 characters"
+					document.getElementById("input").focus();
+				} else {
+					sessionStorage.user = document.getElementById("input").value
+					location.href = "chat.html"
 				}
 			}
 			document.getElementById("goTo").addEventListener("click", goToPage)
