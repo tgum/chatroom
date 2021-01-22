@@ -94,7 +94,7 @@ function readMessages(data) {
 
 	for (var i = 0; i < keys.length; i++) {
 		var newLi = document.createElement("li");
-		var name = "<div class='user+time+box'><span class='user' onclick='addUserTextarea(this)'>" + allMessages[keys[i]].sender + "</span>"
+		var name = "<div class='user+time'><span class='user' onclick='addUserTextarea(this)'>" + allMessages[keys[i]].sender + "</span>"
 		var time = "<span class='time'>" + allMessages[keys[i]].time + "</span></div>"
 		var content = "<div class='content'>" + rot13(allMessages[keys[i]].content) + "</div>"
 		newLi.innerHTML = name + time + content.replace("\n", "<br>");
