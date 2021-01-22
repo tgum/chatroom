@@ -67,24 +67,26 @@ document.getElementById("submit").addEventListener("click", sendMessage);
 function readMessages(data) {
 	allMessages = data.val();
 	var keys = Object.keys(allMessages).reverse();
-	document.getElementById("messages").innerHTML = "";
-	document.getElementById("details").innerHTML = ""
+	document.getElementById("calendar").innerHTML = ""
 	var dates = []
 	for (var i = 0; i < keys.length; i++) {
 		var date = new Date();
 		if (!dates.includes(allMessages[keys[i]].date)) {
 			dates.push(allMessages[keys[i]].date)
+
 			var newDetails = document.createElement("details")
 			var newSummary = document.createElement("summary")
 			var newUl = document.createElement("ul")
+
 			newSummary.textContent = allMessages[keys[i]].fullDate
+			newDetails.className = "day"
 			newDetails.id = allMessages[keys[i]].date
 			var nowDate = daysWeek[date.getDay()] + ", " + date.getDate() + " " + months[date.getMonth()] + " " + date.getFullYear();
 			if (allMessages[keys[i]].fullDate === nowDate) {
 				newDetails.open = true
 			}
 			newUl.className = allMessages[keys[i]].date
-			document.getElementById("details").appendChild(newDetails)
+			document.getElementById("calendar").appendChild(newDetails)
 			document.getElementById(allMessages[keys[i]].date).appendChild(newSummary)
 			document.getElementById(allMessages[keys[i]].date).appendChild(newUl)
 		}
@@ -92,7 +94,7 @@ function readMessages(data) {
 
 	for (var i = 0; i < keys.length; i++) {
 		var newLi = document.createElement("li");
-		var name = "<div class='detailbox'><span class='user' onclick='addUserTextarea(this)'>" + allMessages[keys[i]].sender + "</span>:"
+		var name = "<div class='user+time+box'><span class='user' onclick='addUserTextarea(this)'>" + allMessages[keys[i]].sender + "</span>"
 		var time = "<span class='time'>" + allMessages[keys[i]].time + "</span></div>"
 		var content = "<div class='content'>" + rot13(allMessages[keys[i]].content) + "</div>"
 		newLi.innerHTML = name + time + content.replace("\n", "<br>");
