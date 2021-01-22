@@ -7,13 +7,13 @@ function rot13(str) {
 }
 
 var firebaseConfig = {
-		apiKey: "AIzaSyBSNTYqIkFl3clQDdV5tpNMdyFhXT8gv44",
-		authDomain: "message-teest.firebaseapp.com",
-		databaseURL: "https://message-teest-default-rtdb.firebaseio.com",
-		projectId: "message-teest",
-		storageBucket: "message-teest.appspot.com",
-		messagingSenderId: "981048070980",
-		appId: "1:981048070980:web:5c147607b3f809a4bb3d11"
+	apiKey: "AIzaSyBhIbcYDG4g1cG3PUf_pGSPMsx7rvYLu88",
+	authDomain: "scores-ba434.firebaseapp.com",
+	databaseURL: "https://scores-ba434-default-rtdb.firebaseio.com",
+	projectId: "scores-ba434",
+	storageBucket: "scores-ba434.appspot.com",
+	messagingSenderId: "49489500280",
+	appId: "1:49489500280:web:ba94d770db3807e42f758d"
 };
 
 // Initialize Firebase
