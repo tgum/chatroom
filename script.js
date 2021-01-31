@@ -32,9 +32,7 @@ function sendMessage() {
 		var firstIndex = text.indexOf(separator)
 		var lastIndex = text.lastIndexOf(separator)
 		var code = text.slice(firstIndex + separator.length, lastIndex)
-		code = code.replaceAll("\n", "`br`")
 		code = code.replaceAll("<", "&lt;")
-		code = code.replaceAll("`br`", "<br>")
 		var complete = text.slice(0, firstIndex) + code + text.slice(lastIndex + separator.length, text.length)
 		text = complete
 	}
@@ -53,7 +51,7 @@ function sendMessage() {
 
 	var data = {
 		sender: sessionStorage.user,
-		content: rot13(text),
+		content: rot13(marked(text)),
 		time: time.getHours() + ":" + minutes,
 		date: time.getDate(),
 		fullDate: date
@@ -96,8 +94,8 @@ function readMessages(data) {
 		var newLi = document.createElement("li");
 		var name = "<div class='user+time'><span class='user' onclick='addUserTextarea(this)'>" + allMessages[keys[i]].sender + "</span>"
 		var time = "<span class='time'>" + allMessages[keys[i]].time + "</span></div>"
-		var content = "<div class='content'>" + rot13(allMessages[keys[i]].content) + "</div>"
-		newLi.innerHTML = name + time + content.replace("\n", "<br>");
+		var content = "<div class='content'>" + rot13(allMessages[keys[i]].content).trim() + "</div>"
+		newLi.innerHTML = name + time + content.replace(/\n/g, "<br>");
 		document.getElementsByClassName(allMessages[keys[i]].date)[0].appendChild(newLi)
 	}
 }
