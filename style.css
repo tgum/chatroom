@@ -33,7 +33,12 @@ a {
 	color: blue;
 }
 
-ul.messages {
+#md-link{
+ color:rgb(150, 150, 255);
+ text-decoration: none;
+}
+
+ul.messages  {
 	list-style-type: none; /* Remove bullets */
 	margin-top: .7rem;
 }
