@@ -6,7 +6,9 @@ function rot13(str) {
 	return str.split('').map(translate).join('');
 }
 
-var firebaseConfig = {
+var devMode = true
+
+var devFirebaseConfig = {
 	apiKey: "AIzaSyBhIbcYDG4g1cG3PUf_pGSPMsx7rvYLu88",
 	authDomain: "scores-ba434.firebaseapp.com",
 	databaseURL: "https://scores-ba434-default-rtdb.firebaseio.com",
@@ -16,8 +18,18 @@ var firebaseConfig = {
 	appId: "1:49489500280:web:ba94d770db3807e42f758d"
 };
 
+var firebaseConfig = {
+	apiKey: "AIzaSyBSNTYqIkFl3clQDdV5tpNMdyFhXT8gv44",
+	authDomain: "message-teest.firebaseapp.com",
+	databaseURL: "https://message-teest-default-rtdb.firebaseio.com",
+	projectId: "message-teest",
+	storageBucket: "message-teest.appspot.com",
+	messagingSenderId: "981048070980",
+	appId: "1:981048070980:web:5c147607b3f809a4bb3d11"
+};
+
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(devMode ? devFirebaseConfig : firebaseConfig);
 var database = firebase.database();
 var ref = database.ref("messages");
 var allMessages;
@@ -37,6 +49,22 @@ function sendMessage() {
 		text = complete
 	}
 
+	text = text.replace(/\*\*(.*)\*\*/gim, "<strong>$1</strong>")
+					.replace(/\*(.*)\*/gim, "<em>$1</em>")
+					.replace(/__(.*)__/gim, "<strong>$1</strong>")
+					.replace(/_(.*)_/gim, "<em>$1</em>")
+					.replace(/^# (.*)/gim, "<h1>$1</h1>")
+					.replace(/^## (.*)/gim, "<h2>$1</h2>")
+					.replace(/^### (.*)/gim, "<h3>$1</h3>")
+					.replace(/^#### (.*)/gim, "<h4>$1</h4>")
+					.replace(/^##### (.*)/gim, "<h5>$1</h5>")
+					.replace(/^###### (.*)/gim, "<h6>$1</h6>")
+					.replace(/!\[(.*)\]\((.*)\)/gim, "<img src='$2' alt='$1'>")
+					.replace(/\[(.*)\]\((.*)\)/gim, "<a href='$2'>$1</a>")
+					.replace(/~~(.*)~~/gim, "<s>$1</s>")
+					.replace(/\s{5}$/gim, "<br>")
+					.replace(/\n\n/gim, "<br>")
+
 	time = new Date();
 	var date = daysWeek[time.getDay()] + ", " + time.getDate() + " " + months[time.getMonth()] + " " + time.getFullYear();
 	var minutes = time.getMinutes();
@@ -51,7 +79,7 @@ function sendMessage() {
 
 	var data = {
 		sender: sessionStorage.user,
-		content: rot13(marked(text)),
+		content: rot13(text),
 		time: time.getHours() + ":" + minutes,
 		date: time.getDate(),
 		fullDate: date
