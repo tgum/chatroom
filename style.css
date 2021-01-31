@@ -34,7 +34,8 @@ a {
 }
 
 #md-link{
- color:rgb(200, 200, 255)
+ color:rgb(150, 150, 255);
+ text-decoration: none;
 }
 
 ul {
