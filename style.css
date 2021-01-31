@@ -33,7 +33,7 @@ a {
 	color: blue;
 }
 
-ul {
+ul.messages {
 	list-style-type: none; /* Remove bullets */
 	margin-top: .7rem;
 }
