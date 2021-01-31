@@ -33,6 +33,10 @@ a {
 	color: blue;
 }
 
+#md-link{
+ color:rgb(200, 200, 255)
+}
+
 ul {
 	list-style-type: none; /* Remove bullets */
 	margin-top: .7rem;
