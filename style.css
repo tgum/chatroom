@@ -38,10 +38,14 @@ a {
  text-decoration: none;
 }
 
-ul.messages  {
-	list-style-type: none; /* Remove bullets */
+ /* ul  {
+	list-style-type: none;
 	margin-top: .7rem;
-}
+} */
+
+/* ul.messages > ul {
+	list-style-type: disc;
+} */
 
 /* 	=============
 		3. layout

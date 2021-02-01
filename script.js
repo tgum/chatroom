@@ -75,7 +75,6 @@ function readMessages(data) {
 			var newDetails = document.createElement("details")
 			var newSummary = document.createElement("summary")
 			var newUl = document.createElement("ul")
-			newUl.className = "messages"
 
 			newSummary.textContent = allMessages[keys[i]].fullDate
 			newDetails.className = "day"
