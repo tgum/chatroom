@@ -64,6 +64,7 @@ function sendMessage() {
 					.replace(/~~(.*)~~/gim, "<s>$1</s>")
 					.replace(/\s{5}$/gim, "<br>")
 					.replace(/\n\n/gim, "<br>")
+					.replace(/(https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*))/, "<a href=\"$1\">$1</a>")
 
 	time = new Date();
 	var date = daysWeek[time.getDay()] + ", " + time.getDate() + " " + months[time.getMonth()] + " " + time.getFullYear();
@@ -97,8 +98,8 @@ function readMessages(data) {
 	var dates = []
 	for (var i = 0; i < keys.length; i++) {
 		var date = new Date();
-		if (!dates.includes(allMessages[keys[i]].date)) {
-			dates.push(allMessages[keys[i]].date)
+		if (!dates.includes(allMessages[keys[i]].fullDate)) {
+			dates.push(allMessages[keys[i]].fullDate)
 
 			var newDetails = document.createElement("details")
 			var newSummary = document.createElement("summary")
@@ -111,10 +112,12 @@ function readMessages(data) {
 			if (allMessages[keys[i]].fullDate === nowDate) {
 				newDetails.open = true
 			}
-			newUl.className = allMessages[keys[i]].date
+			newUl.className = allMessages[keys[i]].fullDate.replaceAll(" ", "_")
 			document.getElementById("calendar").appendChild(newDetails)
-			document.getElementById(allMessages[keys[i]].date).appendChild(newSummary)
-			document.getElementById(allMessages[keys[i]].date).appendChild(newUl)
+			// document.getElementById(allMessages[keys[i]].date).appendChild(newSummary)
+			// document.getElementById(allMessages[keys[i]].date).appendChild(newUl)
+			newDetails.appendChild(newSummary)
+			newDetails.appendChild(newUl)
 		}
 	}
 
@@ -124,7 +127,7 @@ function readMessages(data) {
 		var time = "<span class='time'>" + allMessages[keys[i]].time + "</span></div>"
 		var content = "<div class='content'>" + rot13(allMessages[keys[i]].content).trim() + "</div>"
 		newLi.innerHTML = name + time + content.replace(/\n/g, "<br>");
-		document.getElementsByClassName(allMessages[keys[i]].date)[0].appendChild(newLi)
+		document.getElementsByClassName(allMessages[keys[i]].fullDate.replaceAll(" ", "_"))[0].appendChild(newLi)
 	}
 }
 
@@ -136,3 +139,36 @@ function addUserTextarea(object) {
 	document.getElementById("textBox").value += "@" + object.textContent + " ";
 	document.getElementById("textBox").focus()
 }
+
+let keys = {
+	shift: false,
+	enter: false
+}
+let input = document.getElementById("textBox")
+let button = document.getElementById("submit");
+input.addEventListener("keydown", function(event) {
+	if (event.keyCode === 16) {
+		// event.preventDefault();
+		keys.shift = true
+	}
+	else if (event.keyCode === 13) {
+		// event.preventDefault();
+		keys.enter = true;
+	}
+	if (keys.shift && keys.enter) {
+		event.preventDefault()
+		button.click();
+		keys.enter = false;
+		keys.shift = false;
+	}
+});
+input.addEventListener("keyup", event => {
+	if (event.keyCode === 16) {
+		// event.preventDefault();
+		keys.shift = false
+	}
+	else if (event.keyCode === 13) {
+		// event.preventDefault();
+		keys.enter = false
+	}
+});
