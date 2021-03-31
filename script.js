@@ -6,7 +6,7 @@ function rot13(str) {
 	return str.split('').map(translate).join('');
 }
 
-var devMode = false
+var devMode = true
 
 var devFirebaseConfig = {
 	apiKey: "AIzaSyBhIbcYDG4g1cG3PUf_pGSPMsx7rvYLu88",
