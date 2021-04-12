@@ -18,12 +18,13 @@
 		</div>
 
 		<script>
+			let maxNameLength = 30
 			function goToPage() {
 				if (document.getElementById("input").value === "") {
 					document.getElementById('nope').textContent = "A username is required"
 					document.getElementById("input").focus();
-				} else if (document.getElementById("input").value.length > 20) {
-					document.getElementById('nope').textContent = "Your username must be under 20 characters"
+				} else if (document.getElementById("input").value.length > maxNameLength) {
+					document.getElementById('nope').textContent = "Your username must be under " + maxNameLength + " characters"
 					document.getElementById("input").focus();
 				} else {
 					sessionStorage.user = document.getElementById("input").value
